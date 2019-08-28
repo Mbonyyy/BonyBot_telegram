@@ -3,7 +3,7 @@
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
   "name": "BonyBot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Track your crypto portfolio, keep calm and hodl!",
   "main": "index.js",
   "scripts": {

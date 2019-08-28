@@ -10,11 +10,10 @@ async function overview(ctx,userId,menuKeyboard)
   if (user==null || user.holdings.length <= 0) 
   {  
     user = await db.insert({userId, histories: [], holdings: [], btcTarget:0, alertInterval:0});
-    ctx.replyWithHTML(`Hey <strong>${ctx.from.first_name}</strong>! Your portfolio is empty!\nUse these commands to fill your 👝BAG👝: 
-
-BUY ✍🏼  <strong>buy 'nb' 'ticker'</strong>
-SELL  ✍🏼  <strong>sell 'nb' 'ticker'</strong>
-DELETE ✍🏼  <strong>delete assets</strong>
+    ctx.replyWithHTML(`Hey <strong>${ctx.from.first_name}</strong>! Your portfolio is empty!\nUse these commands to fill your BAG👝: 
+Add crypto  👉  <code>buy 'nb' 'ticker'\</code>
+Remove/sell crypto  👉  <code>sell 'nb' 'ticker'\</code>
+Delete all crypto  👉  <code>delete assets</code>
 BTC TARGET ✍🏼  <strong>target 'nb'</strong>
 
 Example:  <code>buy 0.1 BTC</code>`, menuKeyboard);

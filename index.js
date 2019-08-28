@@ -19,8 +19,9 @@ const db = require('./src/db');
 const Target = require('./src/actions/target');
 const AddCrypto = require('./src/actions/addCrypto');
 const Crypto = require('./src/actions/cryptoPrice');
-const Help = require('./src/actions/help');
 const Delete = require('./src/actions/deleteAssets');
+const Help = require('./src/actions/help');
+const About = require('./src/actions/about');
 
 //buttons packages
 const News = require('./src/buttons/news');
@@ -42,6 +43,12 @@ const bagOverview = Markup.inlineKeyboard([
 
 const backKeyboard = Markup.inlineKeyboard([
       Markup.callbackButton("← BACK","BACK")
+    ]).extra();
+
+const gitHub = 'https://github.com/Mbonyyy/BonyBot_telegram';
+const BTCDon = 'https://www.blockchain.com/btc/address/3A37UHJV2fRpBXmR6SCNJ8L5sByniYm8Dw';
+const gitKeyboard = Markup.inlineKeyboard([
+      Markup.urlButton("GitHub Repo",gitHub)
     ]).extra();
 
 //Start Bot / menu button    
@@ -102,32 +109,31 @@ bot.on('message', async (ctx) => {
  
   var command = ctx.message.text;
   var request = ctx.message.text.split(" ");
-  if(command =='/help')
-    await Help.getCommands(ctx,menuKeyboard);
-  
   if(request[0] =='price' || request[0] =='Price')
-    await Crypto.getPrice(ctx,request,backKeyboard);
+    return await Crypto.getPrice(ctx,request,backKeyboard);
 
   //add or remove crypto in the portfolio tracker
   if(request[0] =='buy'|| request[0] =='sell'|| request[0] =='Buy'|| request[0] =='Sell')
-    await AddCrypto.transact(ctx,userId,request,menuKeyboard,bagOverview);
+    return await AddCrypto.transact(ctx,userId,request,menuKeyboard,bagOverview);
   
   //delete all crypto in the portfolio tracker
-  if(command =='delete assets')
-    await Delete.assets(ctx,userId, bagOverview);
+  if(command =='delete assets'|| command =='Delete assets')
+    return await Delete.assets(ctx,userId, bagOverview);
   
   //set the BTC target in the portfolio tracker
   if(request[0] =='target'|| request[0] =='Target')
-    await Target.set(ctx,userId,request, bagOverview);
-
-  /*else
-    ctx.replyWithMarkdown(`Wrong command!😐 I can't help you with *"${request}"*.\nInstructions 👉 /help`,menuKeyboard)
-  */
-});
-
-bot.hears('/hello', async (ctx) => {
-  const userId = ctx.from.id;   
-  ctx.replyWithChatAction(userId, await Portfolio.overview(ctx,userId,menuKeyboard))
+    return await Target.set(ctx,userId,request, bagOverview);
+  
+  if(command =='/help')
+    return await Help.getCommands(ctx,menuKeyboard);
+  
+  if(command =='/about')
+    return await About.me(ctx,gitKeyboard);
+  
+  else
+  //if(request[0] !=='buy'|| request[0] !=='sell'|| request[0] !=='Buy'|| request[0] !=='Sell') 
+   return await ctx.replyWithMarkdown(`Wrong command!😐 I can't help you with *"${command}"*.\nInstructions 👉 /help`,menuKeyboard)
+  
 });
 
 //start bot
