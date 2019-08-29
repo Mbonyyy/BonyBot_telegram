@@ -1,4 +1,4 @@
-Welcome to *BonyBot*
+Welcome to [*BonyBot*](https://telegram.me/bony-bot)
 =================
 
 This Telegram bot was built with Node.js and Telegraf.
