@@ -3,15 +3,10 @@ Welcome to *BonyBot*
 
 This Telegram bot was built with Node.js and Telegraf.
 
-My Purpose
-------------
-
-This project was built while learning to code by myself on Youtube and through the Evan Tech Academy (Teachable course). My ultimate goal was to be able to write small software projects that will make my day-to-day job easier. With my background in tech business, trading and entreprenorship I knew that coding was the remaining skill to have in order to be automonous. In the begining of 2019 I decided to take up this challenge that was on my bucklist for years. Since that time I've been learning Javascript and Nodejs. 
-
 The Project
 ------------
 
-BonyBot is an alternative crypto portfolio tracker. Track your crypto portfolio on Telegram, keep calm and hodl! Managing crypto assets is easier and more fun with this chatbot. Its free, secure and open source! 
+BonyBot is an alternative crypto portfolio tracker. Managing crypto assets is easier and more fun with this chatbot. Its free, secure and open source! 
 
 Tutorial - How to use BonyBot
 ---------------------

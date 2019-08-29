@@ -1,4 +1,5 @@
 async function getCommands(ctx, menuKeyboard) {
+  
   var helpData = `1️⃣ Manage crypto assets in your <strong>PORTFOLIO</strong> with these commands:\n\nAdd crypto  👉  <code>buy 'nb' 'ticker'\</code>
 Remove/sell crypto  👉  <code>sell 'nb' 'ticker'\</code>
 Delete all crypto  👉  <code>delete assets</code>

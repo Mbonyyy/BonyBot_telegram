@@ -6,7 +6,6 @@ async function assets(ctx,userId, menuKeyboard) {
   ctx.reply("✅All crypto assets deleted!",menuKeyboard);
 }
 
-
 module.exports = {
     assets
 };

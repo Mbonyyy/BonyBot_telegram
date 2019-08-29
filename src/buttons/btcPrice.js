@@ -1,20 +1,19 @@
 const Messari = require('../api/messari');
 
-async function getPrice(ctx,userId,menuKeyboard) 
-{
+async function getPrice(ctx,userId,menuKeyboard) {
   
   var data = await Messari.getSymbolPrice("btc");
-    if (data == null) 
-    {
+  
+    if (data == null) {
       ctx.reply(`Unable to connect to API.`);
     }
-    else 
-    {
-    var btcPrice = Number(data.data.market_data.price_usd).toFixed(2);
-    var BTCprice = new Intl.NumberFormat('en-US', 
+  
+    else {
+      var btcPrice = Number(data.data.market_data.price_usd).toFixed(2);
+      var BTCprice = new Intl.NumberFormat('en-US', 
   { style: 'currency', currency: 'USD' }
 ).format(btcPrice); 
-    var btcData = `Right now, Bitcoin is worth <code>${BTCprice}</code>
+      var btcData = `Right now, Bitcoin is worth <code>${BTCprice}</code>
 24Hr price change is <code>${Number(data.data.market_data.percent_change_usd_last_24_hours).toFixed(2)} %</code>.
 \n-------------------
 

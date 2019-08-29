@@ -1,14 +1,11 @@
 const db = require('../db');
 const Messari = require('../api/messari');
 
-
-async function overview(ctx,userId,menuKeyboard)
-{
+async function overview(ctx,userId,menuKeyboard) {
 
   var user = await db.findOne({userId});
-  //Si au moment de cliquer sur le button l'identité du user n'est pas créé ou qu'il n'y a aucun holdings, créer le user
-  if (user==null || user.holdings.length <= 0) 
-  {  
+  
+  if (user==null || user.holdings.length <= 0) {  
     user = await db.insert({userId, histories: [], holdings: [], btcTarget:0, alertInterval:0});
     ctx.replyWithHTML(`Hey <strong>${ctx.from.first_name}</strong>! Your portfolio is empty!\nUse these commands to fill your BAG👝: 
 Add crypto  👉  <code>buy 'nb' 'ticker'\</code>
@@ -19,28 +16,31 @@ BTC TARGET ✍🏼  <strong>target 'nb'</strong>
 Example:  <code>buy 0.1 BTC</code>`, menuKeyboard);
   
   }
-  else 
-  {
+  
+  else {
   
     const userHoldings = user.holdings
     var resultHoldings = await getHoldings(userHoldings);
  
-    var menuText = '<strong>COIN | PRICE (BTC) | HOLDINGS |  VALUE (BTC)</strong>';
+    var menuText = '<strong>COIN | PRICE(BTC) | HOLDINGS | VALUE(BTC)</strong>';
     var portfolio = formatPorfolio(resultHoldings)  //pour mettre en string mes holdings selon le format choisi
     var btcTargetEquivalent = user.btcTarget; 
+    
     if (btcTargetEquivalent === 0){
       await ctx.replyWithHTML(`${menuText}\n\n${portfolio}\n\nSet your BTC target ✍🏼`,menuKeyboard); 
     }
-    else{
+    
+    else {
       await ctx.replyWithHTML(`${menuText}\n\n${portfolio}\n<strong>My Portfolio Target:</strong>  <code>${btcTargetEquivalent} BTC</code>`,menuKeyboard);
     }
+    
   }
   
 
 }
 
-async function getHoldings(userHoldings)
-{
+async function getHoldings(userHoldings) {
+  
   var resultHoldings = [];
   for (const h of userHoldings) {
     var data = await Messari.getSymbolPrice(h.assetTicker);
@@ -60,21 +60,21 @@ async function getHoldings(userHoldings)
   
 }
 
-  function formatPorfolio(resultHoldings) { //pour mettre en string mes holdings selon le format choisi
+  function formatPorfolio(resultHoldings) {
   
-  //fonction pour filter la valeur des btc seulement dans le portfolio
-    for (var i in resultHoldings) 
-    {
-      if (resultHoldings[i].coinSymbol == 'BTC') 
-      {
+    for (var i in resultHoldings) {
+      
+      if (resultHoldings[i].coinSymbol == 'BTC') {
         var btcDom = resultHoldings[i].valueBTC;
       }
+      
     };
+    
     var totalBTC = 0
     var totalUSD = 0
     var result = "";
-    resultHoldings.forEach(x => 
-    {
+    
+    resultHoldings.forEach(x => {
       totalBTC += Number(x.valueBTC);
       totalUSD += Number(x.valueUSD);
     

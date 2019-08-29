@@ -16,12 +16,12 @@ const Extra = require('telegraf/extra');
 const db = require('./src/db');
 
 //actions packages
-const Target = require('./src/actions/target');
-const AddCrypto = require('./src/actions/addCrypto');
-const Crypto = require('./src/actions/cryptoPrice');
-const Delete = require('./src/actions/deleteAssets');
-const Help = require('./src/actions/help');
-const About = require('./src/actions/about');
+const Target = require('./src/commands/target');
+const AddCrypto = require('./src/commands/addCrypto');
+const Crypto = require('./src/commands/cryptoPrice');
+const Delete = require('./src/commands/deleteAssets');
+const Help = require('./src/commands/help');
+const About = require('./src/commands/about');
 
 //buttons packages
 const News = require('./src/buttons/news');
@@ -46,7 +46,6 @@ const backKeyboard = Markup.inlineKeyboard([
     ]).extra();
 
 const gitHub = 'https://github.com/Mbonyyy/BonyBot_telegram';
-const BTCDon = 'https://www.blockchain.com/btc/address/3A37UHJV2fRpBXmR6SCNJ8L5sByniYm8Dw';
 const gitKeyboard = Markup.inlineKeyboard([
       Markup.urlButton("GitHub Repo",gitHub)
     ]).extra();
@@ -71,20 +70,22 @@ bot.action("BACK", async (ctx) => {
 
 //First menuButton
 bot.action("BTC_PRICE", async (ctx) => {
+  await ctx.answerCbQuery(`Wait...`)
+
   const userId = ctx.from.id;
   var chatId = ctx.callbackQuery.message.message_id;
-  ctx.telegram.deleteMessage(userId, chatId);
-  
   await BTC.getPrice(ctx,userId,menuKeyboard);
+  await ctx.telegram.deleteMessage(userId, chatId);
 });
 
 //Second menuButton
 bot.action("PORT_FOLIO", async (ctx) => {
+  await ctx.answerCbQuery(`Wait...`)
+
   const userId = ctx.from.id;
   var chatId = ctx.callbackQuery.message.message_id;
-  ctx.telegram.deleteMessage(userId, chatId);
-
   await Portfolio.overview(ctx, userId, menuKeyboard);
+  await ctx.telegram.deleteMessage(userId, chatId);
  });
 
 //Third menuButton
@@ -93,9 +94,8 @@ bot.action("NEWS",async (ctx) => {
   
   const userId = ctx.from.id;
   var chatId = ctx.callbackQuery.message.message_id;
-  ctx.telegram.deleteMessage(userId, chatId)
-
-  await News.getNews(ctx, menuKeyboard)
+  await News.getNews(ctx, menuKeyboard);
+  await ctx.telegram.deleteMessage(userId, chatId);
 });
 
 bot.on('message', async (ctx) => {
@@ -131,8 +131,7 @@ bot.on('message', async (ctx) => {
     return await About.me(ctx,gitKeyboard);
   
   else
-  //if(request[0] !=='buy'|| request[0] !=='sell'|| request[0] !=='Buy'|| request[0] !=='Sell') 
-   return await ctx.replyWithMarkdown(`Wrong command!😐 I can't help you with *"${command}"*.\nInstructions 👉 /help`,menuKeyboard)
+     return await ctx.replyWithMarkdown(`Wrong command!😐 I can't help you with *"${command}"*.\nInstructions 👉 /help`,menuKeyboard)
   
 });
 

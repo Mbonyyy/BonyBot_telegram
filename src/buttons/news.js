@@ -1,8 +1,6 @@
 const CryptoPanic = require('../api/cryptoPanic');
 
-async function getNews(ctx,menuKeyboard) 
-
-{
+async function getNews(ctx,menuKeyboard) {
  
   var data = await CryptoPanic.getCryptoNews()
   

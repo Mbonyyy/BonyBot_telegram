@@ -4,16 +4,19 @@ const Messari = require('../api/messari');
 async function transact(ctx,userId,request,menuKeyboard,bagOverview) {
   
   var user = await db.findOne({userId}); 
+  
   if (user===null) 
   {  
     user = await db.insert({userId, histories: [], holdings: [], btcTarget:0, alertInterval:0});
   }
+  
   const command = request[0];
   const commandL = command.toLowerCase();
   var numberAsset = parseFloat(request[1]);
   var ticker = request[2];
   
   var data = await Messari.getSymbolPrice(ticker.toLowerCase());
+  
   if (data === null) 
   {
     ctx.replyWithHTML(`Oups😕! **${ticker}** is not a valid ticker.\nTry again like this: <code>add 0.1 btc</code>!\n /help`, menuKeyboard);
@@ -41,7 +44,7 @@ async function transact(ctx,userId,request,menuKeyboard,bagOverview) {
         );
     
     if (currentHold.length == 0){
-    var holding = {numberAsset, assetTicker:ticker};
+      var holding = {numberAsset, assetTicker:ticker};
       user.holdings.push(holding);
       }
     
