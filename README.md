@@ -13,13 +13,13 @@ Tutorial - How to use BonyBot
 
 BonyBot has 3 main functions:
 
-- Get market data on 600+ cryptocurrencies (API from Messari);
+- Get market data on 600+ cryptocurrencies (API from Messari.io);
 - Track and manage your cryptocurrency portfolio;
 - Get top news of the day (API from CryptoPanic.com);
 
 What's next?
-- Bug fixing: you may find some bugs, feel free to notify me
-- Get alerts about your portfolio perfomance (coming soon);
+- Bug fixing: you may find some bugs, feel free to notify me;
+- Get alerts about your portfolio performance (coming soon);
 
 Contribute or support
 -------------------
