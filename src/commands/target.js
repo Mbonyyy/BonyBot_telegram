@@ -20,7 +20,7 @@ async function set(ctx,userId,request, bagOverview) {
 
   await db.update({userId}, {$set: {btcTarget:user.btcTarget}});
 
-  ctx.replyWithHTML(`✅  <code>${input} BTC target</code> saved in your portfolio!\nYou can change it anytime with the same command.`,bagOverview);
+  ctx.replyWithHTML(`✅  <code>${input} BTC target</code> set in your portfolio!\nYou can change it anytime.`,bagOverview);
   }
   
 }

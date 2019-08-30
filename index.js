@@ -54,23 +54,22 @@ const gitKeyboard = Markup.inlineKeyboard([
 bot.start(ctx => {
   const userId = ctx.from.id;   
   var chatId = ctx.message.message_id;
+  
+  ctx.replyWithMarkdown(`Welcome *${ctx.from.first_name}*! How can I help you?`,menuKeyboard);
   ctx.telegram.deleteMessage(userId, chatId-1);
   ctx.telegram.deleteMessage(userId, chatId);
-  
-  ctx.replyWithMarkdown(`Welcome *${ctx.from.first_name}*! How can I help you`,menuKeyboard);
 });
 
 bot.action("BACK", async (ctx) => {
   const userId = ctx.from.id;   
   var chatId = ctx.callbackQuery.message.message_id;
-  await ctx.telegram.deleteMessage(userId, chatId);
 
-  ctx.reply(`Glad I could help you! What esle can I do for you?`,menuKeyboard);
+  await ctx.reply(`Glad I could help you! What esle can I do for you?`,menuKeyboard);
+  await ctx.telegram.deleteMessage(userId, chatId);
 });
 
 //First menuButton
 bot.action("BTC_PRICE", async (ctx) => {
-  await ctx.answerCbQuery(`Wait...`)
 
   const userId = ctx.from.id;
   var chatId = ctx.callbackQuery.message.message_id;
@@ -80,11 +79,10 @@ bot.action("BTC_PRICE", async (ctx) => {
 
 //Second menuButton
 bot.action("PORT_FOLIO", async (ctx) => {
-  await ctx.answerCbQuery(`Wait...`)
 
   const userId = ctx.from.id;
   var chatId = ctx.callbackQuery.message.message_id;
-  await Portfolio.overview(ctx, userId, menuKeyboard);
+  await Portfolio.overview(ctx, userId, chatId,menuKeyboard);
   await ctx.telegram.deleteMessage(userId, chatId);
  });
 
@@ -103,7 +101,6 @@ bot.on('message', async (ctx) => {
   const userId = ctx.from.id;   
   var chatId = ctx.message.message_id;
   var user = await db.findOne({userId});
-
   ctx.telegram.deleteMessage(userId, chatId-1);
   ctx.telegram.deleteMessage(userId, chatId);
  
@@ -132,7 +129,7 @@ bot.on('message', async (ctx) => {
   
   else
      return await ctx.replyWithMarkdown(`Wrong command!😐 I can't help you with *"${command}"*.\nInstructions 👉 /help`,menuKeyboard)
-  
+
 });
 
 //start bot

@@ -16,7 +16,7 @@ async function transact(ctx,userId,request,menuKeyboard,bagOverview) {
   var ticker = request[2];
   
   var data = await Messari.getSymbolPrice(ticker.toLowerCase());
-  
+  console.log(numberAsset)
   if (data === null) 
   {
     ctx.replyWithHTML(`Oups😕! **${ticker}** is not a valid ticker.\nTry again like this: <code>add 0.1 btc</code>!\n /help`, menuKeyboard);
@@ -59,7 +59,7 @@ async function transact(ctx,userId,request,menuKeyboard,bagOverview) {
   await db.update({userId}, {$set: {holdings:user.holdings}});
   await db.update({userId}, {$set: {histories: user.histories}});
   
-  ctx.reply(`✅Crypto saved! You can add as many cryptocurrencies as you wish in your portfolio.`, bagOverview);
+  ctx.reply(`✅Crypto saved!\nYou can add as many cryptocurrencies as you wish in your portfolio.`, bagOverview);
     
   }
 }
