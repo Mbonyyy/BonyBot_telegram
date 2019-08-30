@@ -9,9 +9,9 @@ The Project
 🤖BonyBot is an alternative crypto portfolio tracker. Managing crypto assets is easier than before. Its free, secure and open source! 
 
 BonyBot has 3 main functions:
-- Track and manage your cryptocurrency portfolio;
+- Track and manage your cryptocurrency **portfolio**;
 - Get market data on any cryptocurrencies;
-- Get top news of the day (API from CryptoPanic.com);
+- Get top news of the day;
 
 **What's next?**
 - Bug fixing: you may find some bugs, feel free to notify me;
