@@ -1,20 +1,21 @@
 const db = require('../db');
 const Messari = require('../api/messari');
 
-async function overview(ctx,userId,menuKeyboard) {
+async function overview(ctx,userId,chatId,menuKeyboard) {
 
   var user = await db.findOne({userId});
   
   if (user==null || user.holdings.length <= 0) {  
     user = await db.insert({userId, histories: [], holdings: [], btcTarget:0, alertInterval:0});
-    ctx.replyWithHTML(`Hey <strong>${ctx.from.first_name}</strong>! Your portfolio is empty!\nUse these commands to fill your BAG👝: 
+    ctx.replyWithHTML(`Hey <strong>${ctx.from.first_name}</strong>! Your portfolio is empty!\nWrite the following commands to fill your BAG👝:\n 
 Add crypto  👉  <code>buy 'nb' 'ticker'\</code>
 Remove/sell crypto  👉  <code>sell 'nb' 'ticker'\</code>
 Delete all crypto  👉  <code>delete assets</code>
-BTC TARGET ✍🏼  <strong>target 'nb'</strong>
+BTC TARGET ✍🏼  <code>target 'nb'</code>
 
 Example:  <code>buy 0.1 BTC</code>`, menuKeyboard);
-  
+    console.log(`new userId ctx:`, userId); 
+
   }
   
   else {
