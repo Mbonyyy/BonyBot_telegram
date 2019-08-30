@@ -25,7 +25,7 @@ Tutorial
 
 ![Capture2](https://user-images.githubusercontent.com/46977988/64043242-db9f5880-cb31-11e9-83aa-d58e78362e1f.PNG)
 
-1- The main feature of this chatbot is to manage your cryptocurrency portfolio! Write the following commands to track your holdings: 
+1️⃣ The main feature of this chatbot is to manage your cryptocurrency portfolio! Write the following commands to track your holdings: 
 - Add crypto  👉  `buy nb ticker`
 - Remove/sell crypto  👉  `sell nb ticker`
 - Delete all crypto  👉  `delete assets`
@@ -33,11 +33,15 @@ Tutorial
 
 ![tuto2](https://user-images.githubusercontent.com/46977988/64042407-bd385d80-cb2f-11e9-91a9-12b8d228fe9e.gif)
 
-2- Get market data on 600+ cryptocurrencies by typing `price ticker`. You will get the live quote form Messario.io API.
+This is how your portfolio should look like:
+
+![PortfolioView](https://user-images.githubusercontent.com/46977988/64050426-ff6c9980-cb45-11e9-8fad-9877967dffb1.PNG)
+
+2️⃣ Get market data on 600+ cryptocurrencies by typing `price ticker`. You will get the live quote from Messario.io API.
 
 ![tuto1](https://user-images.githubusercontent.com/46977988/64038990-8cecc100-cb27-11e9-9c34-10af6ed41dd2.gif)
 
-3- Get top 5 news of the day from CryptoPanic.com API by clicking on the `NEWS` button. You can also share them to your contact in Telegram.
+3️⃣ Get top 5 news of the day from CryptoPanic.com API by clicking on the `NEWS` button. You can also share them to your contact in Telegram.
 
 Contribute or support
 -------------------
