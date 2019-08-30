@@ -1,6 +1,6 @@
 {
   "name": "BonyBot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Track your crypto portfolio, keep calm and hodl!",
   "main": "index.js",
   "scripts": {
