@@ -39,7 +39,7 @@ This is how your portfolio should look like:
 
 2️⃣ Get market data on 600+ cryptocurrencies by typing `price ticker`. You will get the live quote from Messario.io API.
 
-![tuto1](https://user-images.githubusercontent.com/46977988/64038990-8cecc100-cb27-11e9-9c34-10af6ed41dd2.gif)
+![tutoPrice](https://user-images.githubusercontent.com/46977988/64051910-b8cd6e00-cb4a-11e9-9ab1-c30dbb72eb5c.gif)
 
 3️⃣ Get top 5 news of the day from CryptoPanic.com API by clicking on the `NEWS` button. You can also share them to your contact in Telegram.
 
