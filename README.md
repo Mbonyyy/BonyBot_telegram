@@ -50,7 +50,7 @@ Contribute or support
 
 I spent countless time building this free chatbot. Feel free to contribute to the source code or support the project :)
 
-**BTC:** 3A37UHJV2fRpBXmR6SCNJ8L5sByniYm8Dw
+💎**DONATE BTC:** 3A37UHJV2fRpBXmR6SCNJ8L5sByniYm8Dw
 
 Made with ❤️ by *Julien Mbony*
 -------------------
