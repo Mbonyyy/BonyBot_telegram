@@ -13,9 +13,7 @@ BonyBot has 3 main functions:
 - Get market data on any cryptocurrencies;
 - Get top news of the day;
 
-**What's next?**
-- Bug fixing: you may find some bugs, feel free to notify me;
-- Get alerts⚡️ about your portfolio performance (coming soon);
+
 
 Tutorial 
 ---------
@@ -39,11 +37,15 @@ This is how your portfolio should look like:
 
 ![PortfolioView](https://user-images.githubusercontent.com/46977988/64050426-ff6c9980-cb45-11e9-8fad-9877967dffb1.PNG)
 
-2️⃣ Get market data on 600+ cryptocurrencies by typing `price 'ticker'`. You will get the live quote from [Messario](https://messari.io/).
+2️⃣ Get market data on 600+ cryptocurrencies by typing `price 'ticker'`. You will get the live quote from Messario.io API.
 
 ![tutoPrice](https://user-images.githubusercontent.com/46977988/64051910-b8cd6e00-cb4a-11e9-9ab1-c30dbb72eb5c.gif)
 
-3️⃣ Get top 5 news of the day from [CryptoPanic](https://cryptopanic.com/) by clicking on the `NEWS` button. You can also share them to your contact in Telegram.
+3️⃣ Get top 5 news of the day from CryptoPanic.com API by clicking on the `NEWS` button. You can also share them to your contact in Telegram.
+
+**What's next?**
+- Bug fixing: you may find some bugs, feel free to notify me;
+- Get alerts⚡️ about your portfolio performance (coming soon);
 
 Contribute or support
 -------------------
