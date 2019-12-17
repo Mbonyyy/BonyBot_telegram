@@ -14,7 +14,6 @@ const Telegraf = require('telegraf');
 const Markup = require('telegraf/markup');
 const Extra = require('telegraf/extra');
 const db = require('./src/db');
-
 //actions packages
 const Target = require('./src/commands/target');
 const AddCrypto = require('./src/commands/addCrypto');
@@ -30,21 +29,17 @@ const Portfolio = require('./src/buttons/portfolioOverview');
 
 //initiate bot
 const bot = new Telegraf(process.env.BOT_TOKEN);
-
 const menuKeyboard = Markup.inlineKeyboard([
       Markup.callbackButton("₿", "BTC_PRICE"),
       Markup.callbackButton("❖Portfolio", "PORT_FOLIO"),
       Markup.callbackButton("News", "NEWS")
     ]).resize().extra();
-
 const bagOverview = Markup.inlineKeyboard([
       Markup.callbackButton("View my Portfolio", "PORT_FOLIO")
     ]).extra();
-
 const backKeyboard = Markup.inlineKeyboard([
       Markup.callbackButton("← BACK","BACK")
     ]).extra();
-
 const gitHub = 'https://github.com/Mbonyyy/BonyBot_telegram';
 const gitKeyboard = Markup.inlineKeyboard([
       Markup.urlButton("GitHub Repo",gitHub)
